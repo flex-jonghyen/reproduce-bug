@@ -1,6 +1,6 @@
-import { ReactNode } from "react";
+import { ReactElement } from "react";
 
-type 리턴타입 = ReactNode;
+type 리턴타입 = ReactElement;
 type 문제타입 = {
   name: string;
   value: string;
