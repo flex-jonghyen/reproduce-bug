@@ -6,7 +6,7 @@ import { 한글컴포넌트 } from '../src/SomeComponent'
 import styles from '../styles/Home.module.css'
 
 const Home: NextPage = () => {
-  const 한글변수 = 한글함수();
+  const 한글변수 = 한글함수({ value: '한글' });
   return (
     <div className={styles.container}>
       <한글컴포넌트 {...한글변수} />
