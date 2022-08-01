@@ -3,5 +3,8 @@
   "workspaces": [
     "apps/*",
     "components/*"
-  ]
+  ],
+  "devDependencies": {
+    "zx": "^7.0.7"
+  }
 }
