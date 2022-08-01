@@ -13,145 +13,153 @@ module lodash/camelCase.js 295 ms (self 958 ms) [read-resource 936 ms]
         └─ npm package name
 
 
-next-build 4s
-├─ generate-buildid 126 µs
-├─ load-custom-routes 112 µs
-├─ verify-and-lint 451 ms
-├─ verify-typescript-setup 600 ms
-├─ collect-pages 2 ms
-├─ create-pages-mapping 255 µs
-├─ create-entrypoints 17 ms
-├─ public-dir-conflict-check 245 µs
-├─ generate-routes-manifest 919 µs
-├─ create-dist-dir 420 µs
-├─ write-routes-manifest 652 µs
-├─ generate-required-server-files 100 µs
-├─ run-webpack-compiler 1.4s
-│  ├─ generate-webpack-config 363 ms
-│  ├─ make 106 ms
-│  ├─ server compilation 224 ms
-│  │  ├─ next-trace-entrypoint-plugin 222 ms (self 2.5 ms)
-│  │  │  ├─ finish-modules 39 ms
-│  │  │  │  ├─ get-entries 191 µs
-│  │  │  │  ├─ node-file-trace 39 ms
-│  │  │  │  └─ collect-traced-files 151 µs
-│  │  │  └─ create-trace-assets 42 ms
-│  │  ├─ module /Users/kimjonghyen/workspace/reproduce/apps/test/pages/[tab].tsx 78 ms (total 14 ms, self 13 ms) [read-resource 876 µs, next-swc-loader 3.1 ms]
-│  │  │  ├─ module react/jsx-runtime 92 µs
-│  │  │  └─ module /Users/kimjonghyen/workspace/reproduce/.yarn/__virtual__/@flex-components-simple-components-virtual-dfe5755a88/1/components/simple-components/dist/esm/index.js 1.1 ms [read-resource 87 µs]
-│  │  ├─ module /Users/kimjonghyen/workspace/reproduce/apps/test/pages/_app.tsx 62 ms (total 17 ms, self 17 ms) [read-resource 130 µs, next-swc-loader 11 ms]
-│  │  │  └─ module react-hook-form 14 µs
-│  │  ├─ module next/dist/pages/_error.js 55 ms (total 26 ms, self 26 ms) [read-resource 1.2 ms, next-swc-loader 17 ms]
-│  │  │  ├─ module react 14 µs
-│  │  │  └─ module ../shared/lib/head 13 µs
-│  │  ├─ module next/dist/pages/_document.js 66 ms (total 46 ms, self 72 ms) [read-resource 11 ms, next-swc-loader 27 ms]
-│  │  │  ├─ module ../server/get-page-files 6 µs
-│  │  │  ├─ module ../server/utils 8 µs
+next-build 3.2s
+├─ generate-buildid 128 µs
+├─ load-custom-routes 111 µs
+├─ verify-and-lint 448 ms
+├─ verify-typescript-setup 557 ms
+├─ collect-pages 2.3 ms
+├─ create-pages-mapping 226 µs
+├─ create-entrypoints 13 ms
+├─ public-dir-conflict-check 3.7 ms
+├─ generate-routes-manifest 1.3 ms
+├─ create-dist-dir 453 µs
+├─ write-routes-manifest 466 µs
+├─ generate-required-server-files 92 µs
+├─ run-webpack-compiler 1.5s
+│  ├─ generate-webpack-config 343 ms
+│  ├─ make 105 ms
+│  ├─ server compilation 217 ms
+│  │  ├─ next-trace-entrypoint-plugin 215 ms (self 1.3 ms)
+│  │  │  ├─ finish-modules 34 ms
+│  │  │  │  ├─ get-entries 80 µs
+│  │  │  │  ├─ node-file-trace 34 ms
+│  │  │  │  └─ collect-traced-files 132 µs
+│  │  │  └─ create-trace-assets 41 ms
+│  │  ├─ module /Users/kimjonghyen/workspace/reproduce/apps/test/pages/[tab].tsx 79 ms (total 14 ms, self 11 ms) [read-resource 652 µs, next-swc-loader 2.3 ms]
+│  │  │  ├─ module react/jsx-runtime 113 µs
+│  │  │  └─ module /Users/kimjonghyen/workspace/reproduce/.yarn/__virtual__/@flex-components-simple-components-virtual-dfe5755a88/1/components/simple-components/dist/esm/index.js 6.5 ms (total 3.3 ms, self 725 µs) [read-resource 68 µs]
+│  │  │     ├─ module /Users/kimjonghyen/workspace/reproduce/.yarn/__virtual__/@flex-components-simple-components-virtual-dfe5755a88/1/components/simple-components/dist/esm/Button.js 574 µs [read-resource 41 µs]
+│  │  │     ├─ module /Users/kimjonghyen/workspace/reproduce/.yarn/__virtual__/@flex-components-simple-components-virtual-dfe5755a88/1/components/simple-components/dist/esm/Div.js 777 µs [read-resource 578 µs]
+│  │  │     ├─ module /Users/kimjonghyen/workspace/reproduce/.yarn/__virtual__/@flex-components-simple-components-virtual-dfe5755a88/1/components/simple-components/dist/esm/TextArea.js 1 ms [read-resource 754 µs]
+│  │  │     └─ module /Users/kimjonghyen/workspace/reproduce/.yarn/__virtual__/@flex-components-simple-components-virtual-dfe5755a88/1/components/simple-components/dist/esm/Input.js 226 µs [read-resource 6 µs]
+│  │  ├─ module /Users/kimjonghyen/workspace/reproduce/apps/test/pages/_app.tsx 59 ms (total 15 ms, self 15 ms) [read-resource 100 µs, next-swc-loader 9.8 ms]
+│  │  │  └─ module react-hook-form 19 µs
+│  │  ├─ module next/dist/pages/_error.js 51 ms (total 18 ms, self 18 ms) [read-resource 922 µs, next-swc-loader 11 ms]
+│  │  │  ├─ module react 10 µs
+│  │  │  └─ module ../shared/lib/head 6 µs
+│  │  ├─ module next/dist/pages/_document.js 65 ms (total 45 ms, self 68 ms) [read-resource 5.4 ms, next-swc-loader 30 ms]
+│  │  │  ├─ module ../shared/lib/constants 13 µs
+│  │  │  ├─ module ../shared/lib/html-context 7 µs
+│  │  │  ├─ module ../server/get-page-files 56 µs
+│  │  │  ├─ module ../server/utils 6 µs
 │  │  │  ├─ module ../server/htmlescape 5 µs
-│  │  │  ├─ module ../shared/lib/constants 6 µs
-│  │  │  ├─ module ../shared/lib/html-context 5 µs
-│  │  │  ├─ module ../shared/lib/is-plain-object 15 µs
-│  │  │  └─ module ../shared/lib/head-manager-context 17 µs
-│  │  ├─ entry next/dist/pages/_error 86 ms
-│  │  ├─ entry next/dist/pages/_document 103 ms
-│  │  ├─ entry private-next-pages/[tab].tsx 105 ms
-│  │  ├─ entry private-next-pages/_app.tsx 105 ms
-│  │  ├─ webpack-compilation-chunk-graph 1.9 ms
-│  │  ├─ webpack-compilation-optimize-modules 11 µs
-│  │  ├─ webpack-compilation-optimize-chunks 2 ms
-│  │  ├─ webpack-compilation-optimize-tree 71 µs
-│  │  ├─ webpack-compilation-optimize 3.4 ms
-│  │  ├─ webpack-compilation-hash 3.6 ms
-│  │  └─ webpack-compilation-seal 69 ms
-│  ├─ emit 3.1 ms
-│  ├─ webpack-close 64 ms (self 63 ms)
-│  │  └─ webpack-generate-error-stats 553 µs
-│  ├─ make 36 µs
-│  ├─ edge-server compilation 3 ms
-│  │  ├─ next-trace-entrypoint-plugin 2.6 ms (self 383 µs)
-│  │  │  ├─ finish-modules 48 µs
-│  │  │  │  ├─ get-entries 0 µs
-│  │  │  │  ├─ node-file-trace 37 µs
+│  │  │  ├─ module ../shared/lib/is-plain-object 23 µs
+│  │  │  └─ module ../shared/lib/head-manager-context 18 µs
+│  │  ├─ entry next/dist/pages/_error 78 ms
+│  │  ├─ entry next/dist/pages/_document 98 ms
+│  │  ├─ entry private-next-pages/[tab].tsx 104 ms
+│  │  ├─ entry private-next-pages/_app.tsx 104 ms
+│  │  ├─ webpack-compilation-chunk-graph 1.8 ms
+│  │  ├─ webpack-compilation-optimize-modules 10 µs
+│  │  ├─ webpack-compilation-optimize-chunks 1.8 ms
+│  │  ├─ webpack-compilation-optimize-tree 66 µs
+│  │  ├─ webpack-compilation-optimize 3.8 ms
+│  │  ├─ webpack-compilation-hash 3 ms
+│  │  └─ webpack-compilation-seal 68 ms
+│  ├─ emit 2.9 ms
+│  ├─ webpack-close 84 ms (self 82 ms)
+│  │  └─ webpack-generate-error-stats 1.1 ms
+│  ├─ make 52 µs
+│  ├─ edge-server compilation 3.5 ms
+│  │  ├─ next-trace-entrypoint-plugin 3.1 ms (self 412 µs)
+│  │  │  ├─ finish-modules 58 µs
+│  │  │  │  ├─ get-entries 1 µs
+│  │  │  │  ├─ node-file-trace 43 µs
 │  │  │  │  └─ collect-traced-files 1 µs
-│  │  │  └─ create-trace-assets 88 µs
-│  │  ├─ webpack-compilation-chunk-graph 22 µs
-│  │  ├─ webpack-compilation-optimize-modules 88 µs
+│  │  │  └─ create-trace-assets 101 µs
+│  │  ├─ webpack-compilation-chunk-graph 20 µs
+│  │  ├─ webpack-compilation-optimize-modules 97 µs
 │  │  ├─ webpack-compilation-optimize-chunks 37 µs
-│  │  ├─ webpack-compilation-optimize-tree 10 µs
-│  │  ├─ webpack-compilation-optimize 284 µs
-│  │  ├─ webpack-compilation-hash 25 µs
-│  │  └─ webpack-compilation-seal 1.3 ms
-│  ├─ emit 517 µs
-│  ├─ webpack-close 929 µs (self 184 µs)
-│  │  └─ webpack-generate-error-stats 729 µs
-│  ├─ make 250 ms
-│  ├─ client compilation 392 ms
-│  │  ├─ module next/dist/build/webpack/loaders/next-client-pages-loader.js?absolutePagePath=next%2Fdist%2Fpages%2F_error&page=%2F_error! 2 ms (self 50 ms) [next-client-pages-loader 233 µs, read-resource 14 ms, next-swc-loader 26 ms]
-│  │  ├─ module next/dist/build/webpack/loaders/next-client-pages-loader.js?absolutePagePath=private-next-pages%2F_app.tsx&page=%2F_app! 182 ms (total 48 ms, self 464 µs) [next-client-pages-loader 96 µs]
-│  │  │  └─ module /Users/kimjonghyen/workspace/reproduce/apps/test/pages/_app.tsx 76 ms (total 47 ms, self 16 ms) [read-resource 100 µs, next-swc-loader 15 ms]
-│  │  │     ├─ module react/jsx-runtime.js 454 µs (self 1.2 ms) [read-resource 646 µs]
-│  │  │     ├─ module react-hook-form/dist/index.esm.mjs 31 ms [read-resource 4.1 ms]
-│  │  │     └─ module /Users/kimjonghyen/workspace/reproduce/.yarn/__virtual__/@flex-components-simple-components-virtual-dfe5755a88/1/components/simple-components/dist/esm/index.js 370 µs [read-resource 3 µs]
-│  │  ├─ module next/dist/build/webpack/loaders/next-client-pages-loader.js?absolutePagePath=private-next-pages%2F%5Btab%5D.tsx&page=%2F%5Btab%5D! 125 ms (total 21 ms, self 313 µs) [next-client-pages-loader 14 µs]
-│  │  │  └─ module /Users/kimjonghyen/workspace/reproduce/apps/test/pages/[tab].tsx 20 ms [read-resource 71 µs, next-swc-loader 20 ms]
-│  │  ├─ module next/dist/client/next.js 235 ms (total 7.3 ms, self 527 ms) [read-resource 149 ms, next-swc-loader 319 ms]
-│  │  │  ├─ module react-dom/client.js 553 µs [read-resource 237 µs]
-│  │  │  └─ module react-dom/index.js 57 ms (total 2.1 ms, self 53 ms) [read-resource 1.8 ms]
-│  │  │     └─ module scheduler/index.js 1.3 ms (self 3.4 ms) [read-resource 295 µs]
-│  │  ├─ module next/dist/client/router.js 141 ms (total 8.9 ms, self 253 ms) [read-resource 88 ms, next-swc-loader 121 ms, build-module 490 µs]
-│  │  │  └─ module react/index.js 307 µs (self 2.9 ms) [read-resource 637 µs]
-│  │  ├─ entry next/dist/client/router.js 161 ms
-│  │  ├─ entry next-client-pages-loader?absolutePagePath=next%2Fdist%2Fpages%2F_error&page=%2F_error! 161 ms
-│  │  ├─ entry next-client-pages-loader?absolutePagePath=private-next-pages%2F_app.tsx&page=%2F_app! 193 ms
-│  │  ├─ entry next-client-pages-loader?absolutePagePath=private-next-pages%2F%5Btab%5D.tsx&page=%2F%5Btab%5D! 193 ms
-│  │  ├─ entry next/dist/client/next.js 250 ms
-│  │  ├─ webpack-compilation-chunk-graph 1 ms
+│  │  ├─ webpack-compilation-optimize-tree 11 µs
+│  │  ├─ webpack-compilation-optimize 293 µs
+│  │  ├─ webpack-compilation-hash 39 µs
+│  │  └─ webpack-compilation-seal 1.6 ms
+│  ├─ emit 1.2 ms
+│  ├─ webpack-close 999 µs (self 186 µs)
+│  │  └─ webpack-generate-error-stats 781 µs
+│  ├─ make 352 ms
+│  ├─ client compilation 516 ms
+│  │  ├─ module next/dist/build/webpack/loaders/next-client-pages-loader.js?absolutePagePath=next%2Fdist%2Fpages%2F_error&page=%2F_error! 225 ms (total 3.7 ms, self 250 ms) [next-client-pages-loader 361 µs, read-resource 167 ms, next-swc-loader 63 ms]
+│  │  │  └─ module react/index.js 483 µs (self 12 ms) [read-resource 8.1 ms]
+│  │  ├─ module next/dist/build/webpack/loaders/next-client-pages-loader.js?absolutePagePath=private-next-pages%2F_app.tsx&page=%2F_app! 261 ms (total 54 ms, self 690 µs) [next-client-pages-loader 238 µs]
+│  │  │  └─ module /Users/kimjonghyen/workspace/reproduce/apps/test/pages/_app.tsx 238 ms (total 54 ms, self 5.1 ms) [read-resource 38 µs, next-swc-loader 3.2 ms]
+│  │  │     ├─ module react-hook-form/dist/index.esm.mjs 43 ms [read-resource 19 ms]
+│  │  │     ├─ module react/jsx-runtime.js 3.2 ms (self 14 ms) [read-resource 12 ms]
+│  │  │     └─ module /Users/kimjonghyen/workspace/reproduce/.yarn/__virtual__/@flex-components-simple-components-virtual-dfe5755a88/1/components/simple-components/dist/esm/index.js 12 ms (total 2.5 ms, self 380 µs) [read-resource 2 µs]
+│  │  │        ├─ module /Users/kimjonghyen/workspace/reproduce/.yarn/__virtual__/@flex-components-simple-components-virtual-dfe5755a88/1/components/simple-components/dist/esm/Button.js 322 µs [read-resource 42 µs]
+│  │  │        ├─ module /Users/kimjonghyen/workspace/reproduce/.yarn/__virtual__/@flex-components-simple-components-virtual-dfe5755a88/1/components/simple-components/dist/esm/Div.js 507 µs [read-resource 289 µs]
+│  │  │        ├─ module /Users/kimjonghyen/workspace/reproduce/.yarn/__virtual__/@flex-components-simple-components-virtual-dfe5755a88/1/components/simple-components/dist/esm/Input.js 604 µs [read-resource 486 µs]
+│  │  │        └─ module /Users/kimjonghyen/workspace/reproduce/.yarn/__virtual__/@flex-components-simple-components-virtual-dfe5755a88/1/components/simple-components/dist/esm/TextArea.js 685 µs [read-resource 585 µs]
+│  │  ├─ module next/dist/build/webpack/loaders/next-client-pages-loader.js?absolutePagePath=private-next-pages%2F%5Btab%5D.tsx&page=%2F%5Btab%5D! 62 ms (total 39 ms, self 302 µs) [next-client-pages-loader 19 µs]
+│  │  │  └─ module /Users/kimjonghyen/workspace/reproduce/apps/test/pages/[tab].tsx 39 ms [read-resource 169 µs, next-swc-loader 38 ms]
+│  │  ├─ module next/dist/client/next.js 321 ms (total 13 ms, self 1s) [read-resource 268 ms, next-swc-loader 678 ms]
+│  │  │  ├─ module react-dom/client.js 498 µs [read-resource 253 µs]
+│  │  │  └─ module react-dom/index.js 66 ms (total 2.8 ms, self 62 ms) [read-resource 2.7 ms]
+│  │  │     └─ module scheduler/index.js 422 µs (self 2.3 ms) [read-resource 293 µs]
+│  │  ├─ module next/dist/client/router.js 32 ms (self 524 ms) [read-resource 159 ms, next-swc-loader 329 ms, build-module 176 µs]
+│  │  ├─ entry next-client-pages-loader?absolutePagePath=next%2Fdist%2Fpages%2F_error&page=%2F_error! 272 ms
+│  │  ├─ entry next-client-pages-loader?absolutePagePath=private-next-pages%2F_app.tsx&page=%2F_app! 289 ms
+│  │  ├─ entry next-client-pages-loader?absolutePagePath=private-next-pages%2F%5Btab%5D.tsx&page=%2F%5Btab%5D! 289 ms
+│  │  ├─ entry next/dist/client/router.js 349 ms
+│  │  ├─ entry next/dist/client/next.js 352 ms
+│  │  ├─ webpack-compilation-chunk-graph 1.1 ms
 │  │  ├─ webpack-compilation-optimize-modules 3 µs
-│  │  ├─ webpack-compilation-optimize-chunks 1.3 ms
-│  │  ├─ webpack-compilation-optimize-tree 3 µs
-│  │  ├─ webpack-compilation-optimize 2.3 ms
-│  │  ├─ webpack-compilation-hash 1.5 ms
-│  │  ├─ NextJsBuildManifest-generateClientManifest 348 µs
-│  │  ├─ NextJsBuildManifest-createassets 680 µs
-│  │  ├─ terser-webpack-plugin-optimize 101 ms
-│  │  │  ├─ minify-js 7.5 ms
-│  │  │  ├─ minify-js 6.6 ms
-│  │  │  ├─ minify-js 6.5 ms
-│  │  │  ├─ minify-js 5.8 ms
-│  │  │  ├─ minify-js 5.6 ms
-│  │  │  ├─ minify-js 5.5 ms
-│  │  │  ├─ minify-js 5.5 ms
-│  │  │  ├─ minify-js 24 ms
-│  │  │  ├─ minify-js 73 ms
-│  │  │  └─ minify-js 89 ms
-│  │  ├─ css-minimizer-plugin 150 µs
-│  │  └─ webpack-compilation-seal 139 ms
-│  ├─ emit 2.3 ms
-│  └─ webpack-close 102 ms (self 101 ms)
-│     └─ webpack-generate-error-stats 1.3 ms
-├─ format-webpack-messages 195 µs
-├─ static-check 502 ms
-│  ├─ check-static-error-page 1.3 ms
-│  ├─ check-page 154 µs
-│  ├─ check-page 281 µs
-│  ├─ check-page 1.7 ms
-│  └─ check-page 337 ms
-│     └─ is-page-static 335 ms
-├─ apply-include-excludes 371 µs
-│  ├─ include-exclude 72 µs
-│  ├─ include-exclude 2 µs
+│  │  ├─ webpack-compilation-optimize-chunks 1.4 ms
+│  │  ├─ webpack-compilation-optimize-tree 4 µs
+│  │  ├─ webpack-compilation-optimize 2.4 ms
+│  │  ├─ webpack-compilation-hash 1.7 ms
+│  │  ├─ NextJsBuildManifest-generateClientManifest 424 µs
+│  │  ├─ NextJsBuildManifest-createassets 822 µs
+│  │  ├─ terser-webpack-plugin-optimize 121 ms
+│  │  │  ├─ minify-js 8.3 ms
+│  │  │  ├─ minify-js 7.4 ms
+│  │  │  ├─ minify-js 7.3 ms
+│  │  │  ├─ minify-js 6.4 ms
+│  │  │  ├─ minify-js 6.2 ms
+│  │  │  ├─ minify-js 6.1 ms
+│  │  │  ├─ minify-js 6 ms
+│  │  │  ├─ minify-js 22 ms
+│  │  │  ├─ minify-js 78 ms
+│  │  │  └─ minify-js 106 ms
+│  │  ├─ css-minimizer-plugin 158 µs
+│  │  └─ webpack-compilation-seal 159 ms
+│  ├─ emit 2.5 ms
+│  └─ webpack-close 107 ms (self 107 ms)
+│     └─ webpack-generate-error-stats 394 µs
+├─ format-webpack-messages 125 µs
+├─ static-check 339 ms
+│  ├─ check-static-error-page 2.5 ms
+│  ├─ check-page 150 µs
+│  ├─ check-page 225 µs
+│  ├─ check-page 6.3 ms
+│  └─ check-page 154 ms
+│     └─ is-page-static 148 ms
+├─ apply-include-excludes 338 µs
+│  ├─ include-exclude 65 µs
 │  ├─ include-exclude 1 µs
-│  └─ include-exclude 55 µs
-├─ trace-next-server 26 ms
-├─ next-export 245 ms
-│  ├─ load-dotenv 15 µs
-│  ├─ run-export-path-map 94 µs
-│  ├─ export-page 132 ms
-│  ├─ export-page 133 ms
-│  └─ export-page 137 ms
-├─ static-generation 250 ms
-│  ├─ move-exported-page 327 µs
-│  ├─ move-exported-page 179 µs
-│  └─ move-exported-page 271 µs
-├─ print-tree-view 8.2 ms
-└─ telemetry-flush 208 ms
+│  ├─ include-exclude 1 µs
+│  └─ include-exclude 2 µs
+├─ trace-next-server 31 ms
+├─ next-export 252 ms
+│  ├─ load-dotenv 29 µs
+│  ├─ run-export-path-map 134 µs
+│  ├─ export-page 131 ms
+│  ├─ export-page 134 ms
+│  └─ export-page 134 ms
+├─ static-generation 258 ms
+│  ├─ move-exported-page 362 µs
+│  ├─ move-exported-page 270 µs
+│  └─ move-exported-page 380 µs
+├─ print-tree-view 8.3 ms
+└─ telemetry-flush 198 ms
