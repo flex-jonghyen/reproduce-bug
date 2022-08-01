@@ -16,6 +16,7 @@
     "jsx": "react-jsx",
     "incremental": true,
     "declaration": true,
-    "declarationDir": "./types"
+    "declarationDir": "./types",
+    "emitDeclarationOnly": true
   }
 }

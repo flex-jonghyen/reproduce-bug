@@ -1,13 +1,13 @@
-import fs from 'fs';
-import eventStream from 'event-stream';
-import chalk from 'chalk';
+import fs from "fs";
+import eventStream from "event-stream";
+import chalk from "chalk";
 
 const file = fs.createReadStream(process.argv[2]);
 
 const sum = (...args) => args.reduce((a, b) => a + b, 0);
 
-const aggregate = event => {
-  const isBuildModule = event.name.startsWith('build-module-');
+const aggregate = (event) => {
+  const isBuildModule = event.name.startsWith("build-module-");
 
   event.range = event.timestamp + (event.duration || 0);
   event.total = isBuildModule ? event.duration : 0;
@@ -25,7 +25,7 @@ const aggregate = event => {
     event.mergedChildren = 0;
 
     for (const item of queue) {
-      if (!item.name.startsWith('build-module-')) {
+      if (!item.name.startsWith("build-module-")) {
         event.childrenTimings[item.name] =
           (event.childrenTimings[item.name] || 0) + item.duration;
         continue;
@@ -47,19 +47,19 @@ const aggregate = event => {
   }
 
   event.children.forEach(aggregate);
-  event.children.sort((a, b) => a.timestamp - b.timestamp);
+  // event.children.sort((a, b) => a.timestamp - b.timestamp);
   event.range = Math.max(
     event.range,
-    ...event.children.map(c => c.range || event.timestamp)
+    ...event.children.map((c) => c.range || event.timestamp)
   );
 
   event.total += isBuildModule
-    ? sum(...event.children.map(c => c.total || 0))
+    ? sum(...event.children.map((c) => c.total || 0))
     : 0;
 };
 
 const formatDuration = (duration, bold) => {
-  const color = bold ? chalk.bold : x => x;
+  const color = bold ? chalk.bold : (x) => x;
   if (duration < 1000) {
     // 1ms under
     return color(`${duration} µs`);
@@ -82,11 +82,11 @@ const formatDuration = (duration, bold) => {
     // 100s under
     return color(chalk.red(`${Math.round(duration / 1000000)}s`));
   } else {
-    return color('🔥' + chalk.red(`${Math.round(duration / 1000000)}s`));
+    return color("🔥" + chalk.red(`${Math.round(duration / 1000000)}s`));
   }
 };
 
-const formatTimes = event => {
+const formatTimes = (event) => {
   const range = event.range - event.timestamp;
   const additionalInfo = [];
   if (event.total && event.total !== range) {
@@ -96,53 +96,53 @@ const formatTimes = event => {
     additionalInfo.push(`self ${formatDuration(event.duration, chalk.bold)}`);
   }
   return `${formatDuration(range, additionalInfo.length === 0)}${
-    additionalInfo.length ? ` (${additionalInfo.join(', ')})` : ''
+    additionalInfo.length ? ` (${additionalInfo.join(", ")})` : ""
   }`;
 };
 
-const formatFilename = filename => {
-  return cleanFilename(filename).replace(/.+[\\/]node_modules[\\/]/, '');
+const formatFilename = (filename) => {
+  return cleanFilename(filename).replace(/.+[\\/]node_modules[\\/]/, "");
 };
 
-const cleanFilename = filename => {
-  let result = '';
+const cleanFilename = (filename) => {
+  let result = "";
 
-  if (filename.includes('&absolutePagePath=')) {
+  if (filename.includes("&absolutePagePath=")) {
     result =
-      'page ' +
+      "page " +
       decodeURIComponent(
-        filename.replace(/.+&absolutePagePath=/, '').slice(0, -1)
+        filename.replace(/.+&absolutePagePath=/, "").slice(0, -1)
       );
   }
-  result = filename.replace(/.+!(?!$)/, '');
+  result = filename.replace(/.+!(?!$)/, "");
 
   return result;
 };
 
-const getPackageName = filename => {
+const getPackageName = (filename) => {
   const match = /.+[\\/]node_modules[\\/]((?:@[^\\/]+[\\/])?[^\\/]+)/.exec(
     cleanFilename(filename)
   );
   return match && match[1];
 };
 
-const formatEvent = event => {
-  let head = '';
+const formatEvent = (event) => {
+  let head = "";
 
   switch (event.name) {
-    case 'webpack-compilation': {
+    case "webpack-compilation": {
       const duration = formatTimes(event);
 
       head = `${chalk.bold(`${event.tags.name} compilation`)} ${duration}`;
       break;
     }
-    case 'webpack-invalidated-client':
-    case 'webpack-invalidated-server': {
+    case "webpack-invalidated-client":
+    case "webpack-invalidated-server": {
       const target = event.name.slice(-6);
 
       const reason =
-        event.tags.trigger === 'manual'
-          ? '(new page discovered)'
+        event.tags.trigger === "manual"
+          ? "(new page discovered)"
           : `(${formatFilename(event.tags.trigger)})`;
 
       const duration = formatTimes(event);
@@ -152,20 +152,20 @@ const formatEvent = event => {
       break;
     }
 
-    case 'add-entry': {
+    case "add-entry": {
       const fileName = formatFilename(event.tags.request);
       const duration = formatTimes(event);
 
-      head = `${chalk.blueBright('entry')} ${fileName} ${duration}`;
+      head = `${chalk.blueBright("entry")} ${fileName} ${duration}`;
 
       break;
     }
-    case 'hot-reloader': {
+    case "hot-reloader": {
       head = `${chalk.bold.green(`hot reloader`)}`;
       break;
     }
     default: {
-      const isBuildModule = event.name.startsWith('build-module-');
+      const isBuildModule = event.name.startsWith("build-module-");
 
       if (!isBuildModule) {
         head = `${event.name} ${formatTimes(event)}`;
@@ -178,7 +178,7 @@ const formatEvent = event => {
       const duration = formatTimes(event);
 
       if (packageName) {
-        const numOfMergedModules = mergedChildren ? ` + ${mergedChildren}` : '';
+        const numOfMergedModules = mergedChildren ? ` + ${mergedChildren}` : "";
 
         const description = `(${moduleFilePath}${numOfMergedModules})`;
 
@@ -189,8 +189,8 @@ const formatEvent = event => {
 
       if (childrenTimings && Object.keys(childrenTimings).length !== 0) {
         const pipes = Object.keys(childrenTimings)
-          .map(key => `${key} ${formatDuration(childrenTimings[key])}`)
-          .join(', ');
+          .map((key) => `${key} ${formatDuration(childrenTimings[key])}`)
+          .join(", ");
 
         head += ` [${pipes}]`;
       }
@@ -200,23 +200,23 @@ const formatEvent = event => {
   }
 
   if (event.children && event.children.length !== 0) {
-    return head + '\n' + treeChildren(event.children.map(formatEvent));
+    return head + "\n" + treeChildren(event.children.map(formatEvent));
   } else {
     return head;
   }
 };
 
 const indentWith = (str, firstLinePrefix, otherLinesPrefix) => {
-  return firstLinePrefix + str.replace(/\n/g, '\n' + otherLinesPrefix);
+  return firstLinePrefix + str.replace(/\n/g, "\n" + otherLinesPrefix);
 };
 
-const treeChildren = items => {
-  let str = '';
+const treeChildren = (items) => {
+  let str = "";
   for (let i = 0; i < items.length; i++) {
     if (i !== items.length - 1) {
-      str += indentWith(items[i], '├─ ', '│  ') + '\n';
+      str += indentWith(items[i], "├─ ", "│  ") + "\n";
     } else {
-      str += indentWith(items[i], '└─ ', '   ');
+      str += indentWith(items[i], "└─ ", "   ");
     }
   }
   return str;
@@ -226,13 +226,13 @@ const tracesById = new Map();
 
 const EXPLANATION = `Explanation:
 ${formatEvent({
-  name: 'build-module-js',
-  tags: { name: '/Users/next-user/src/magic-ui/pages/index.js' },
+  name: "build-module-js",
+  tags: { name: "/Users/next-user/src/magic-ui/pages/index.js" },
   duration: 163000,
   timestamp: 0,
   range: 24000000,
   total: 33000000,
-  childrenTimings: { 'read-resource': 873, 'next-babel-turbo-loader': 135000 },
+  childrenTimings: { "read-resource": 873, "next-babel-turbo-loader": 135000 },
 })}
        ════════╤═══════════════════════════════════ ═╤═        ═╤═       ═╤════   ═══════════╤════════════════════════════════════════
                └─ name of the processed module       │          │         │                  └─ timings of nested steps
@@ -241,15 +241,15 @@ ${formatEvent({
                                                      └─ how long until the module and all nested modules took compiling (wall time, without overlapping actions)
 
 ${formatEvent({
-  name: 'build-module-js',
+  name: "build-module-js",
   tags: {
-    name: '/Users/next-user/src/magic-ui/node_modules/lodash/camelCase.js',
+    name: "/Users/next-user/src/magic-ui/node_modules/lodash/camelCase.js",
   },
-  packageName: 'lodash',
+  packageName: "lodash",
   duration: 958000,
   timestamp: 0,
   range: 295000,
-  childrenTimings: { 'read-resource': 936000 },
+  childrenTimings: { "read-resource": 936000 },
   mergedChildren: 281,
 })}
        ═╤════  ══════╤════════════   ═╤═
@@ -262,18 +262,18 @@ ${formatEvent({
 file
   .pipe(eventStream.split())
   .pipe(
-    eventStream.mapSync(data => {
+    eventStream.mapSync((data) => {
       if (!data) {
         return;
       }
       const json = JSON.parse(data);
 
-      json.forEach(event => {
+      json.forEach((event) => {
         tracesById.set(event.id, event);
       });
     })
   )
-  .on('end', () => {
+  .on("end", () => {
     const rootEvents = [];
 
     for (const event of tracesById.values()) {

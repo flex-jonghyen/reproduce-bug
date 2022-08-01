@@ -6,15 +6,15 @@ import resolve from "@rollup/plugin-node-resolve";
  */
 const config = {
   input: "src/index.ts",
-
   output: [
     {
       format: "esm",
       dir: "dist/esm",
-      preserveModules: true,
-      preserveModulesRoot: "src",
+      // preserveModules: true,
+      // preserveModulesRoot: "src",
     },
   ],
+  external: ["react", "react-dom", "react/jsx-runtime"],
   plugins: [
     resolve({ extensions: [".js", ".jsx", ".ts", ".tsx"] }),
     commonjs({ include: /node_modules/ }),
