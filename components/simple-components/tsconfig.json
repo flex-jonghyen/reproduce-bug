@@ -15,7 +15,7 @@
     "isolatedModules": true,
     "jsx": "react-jsx",
     "incremental": true,
-    "outDir": "dist",
-    "declaration": true
+    "declaration": true,
+    "declarationDir": "./types"
   }
 }
