@@ -1,10 +1,8 @@
 {
   "name": "@flex-components/simple-components",
-  "types": "./src/index.ts",
+  "main": "./src/index.ts",
   "type": "module",
-  "exports": {
-    "import": "./src/index.ts"
-  },
+  "sideEffects": false,
   "scripts": {
     "build": "tsc --project ./tsconfig.json"
   },
