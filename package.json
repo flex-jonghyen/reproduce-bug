@@ -6,5 +6,6 @@
   ],
   "devDependencies": {
     "zx": "^7.0.7"
-  }
+  },
+  "packageManager": "yarn@3.2.2"
 }
