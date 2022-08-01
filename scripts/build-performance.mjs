@@ -1,8 +1,8 @@
-import { $, path, argv } from 'zx';
+import { $, path, argv } from "zx";
 
-const tryNumber = argv['try'];
-const appName = argv['app-name'];
-const useBuilt = argv['use-built'];
+const tryNumber = argv["try"];
+const appName = argv["app-name"];
+const useBuilt = argv["use-built"];
 
 for (let i = 0; i < tryNumber; i++) {
   if (!useBuilt) {
@@ -11,11 +11,8 @@ for (let i = 0; i < tryNumber; i++) {
     await $`yarn workspace @flex-apps/${appName} build-app`;
   }
 
-  const makeTreeScriptPath = path.join(__dirname, './trace-to-tree.mjs');
-  const traceFilePath = path.join(
-    __dirname,
-    `../web-applications/${appName}/.next/trace`
-  );
+  const makeTreeScriptPath = path.join(__dirname, "./trace-to-tree.mjs");
+  const traceFilePath = path.join(__dirname, `../apps/${appName}/.next/trace`);
   const resultFilePath = path.join(__dirname, `../${appName}-${i}.txt`);
   await $`yarn node ${makeTreeScriptPath} ${traceFilePath} > ${resultFilePath}`;
 }

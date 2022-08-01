@@ -1,5 +1,4 @@
-import type { NextPage } from 'next';
-import { AssetChip } from '@flexteam/linear';
+import type { NextPage } from "next";
 
 const Home: NextPage = () => {
   return <AssetChip thumbnail={<>123</>} />;

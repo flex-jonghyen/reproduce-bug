@@ -4,7 +4,7 @@ const nextConfig = {
   swcMinify: true,
   experimental: {
     // externalDir: true,
-    esmExternals: false,
+    esmExternals: true,
   },
   typescript: { ignoreBuildErrors: true },
   webpack: (config, { isServer, defaultLoaders }) => {
@@ -15,7 +15,7 @@ const nextConfig = {
       test: /\.(tsx|ts|js|cjs|mjs|jsx)$/,
       exclude: /node_modules/,
       use: defaultLoaders.babel,
-      type: 'javascript/auto',
+      type: "javascript/auto",
       sideEffects: false,
     });
     return config;
