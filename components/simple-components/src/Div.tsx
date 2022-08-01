@@ -1,3 +1,9 @@
-export const Div = () => {
-  return <div>1243</div>;
+import { ReactNode } from "react";
+
+type Props = {
+  children: ReactNode;
+};
+
+export const Div = ({ children }: Props) => {
+  return <div>{children}</div>;
 };

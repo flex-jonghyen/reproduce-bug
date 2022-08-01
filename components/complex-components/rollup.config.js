@@ -12,7 +12,12 @@ const config = {
       dir: "dist/esm",
     },
   ],
-  external: ["react", "react-dom", "react/jsx-runtime"],
+  external: [
+    "react",
+    "react-dom",
+    "react/jsx-runtime",
+    "@flex-components/simple-components",
+  ],
   plugins: [
     resolve({ extensions: [".js", ".jsx", ".ts", ".tsx"] }),
     commonjs({ include: /node_modules/ }),

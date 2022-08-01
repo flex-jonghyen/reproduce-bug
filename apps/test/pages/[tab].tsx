@@ -4,8 +4,8 @@ import { Button, Div } from "@flex-components/simple-components";
 const Home: NextPage = () => {
   return (
     <div>
-      <Div></Div>
-      <Button></Button>123
+      <Div>123</Div>
+      <Button>123</Button>
     </div>
   );
 };
