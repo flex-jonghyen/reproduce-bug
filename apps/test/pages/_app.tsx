@@ -1,7 +1,7 @@
 import type { AppProps } from "next/app";
 
+import { Div, Button } from "@flex-components/simple-components";
 import { DoubleButton } from "@flex-components/complex-components";
-import { Button, Div } from "@flex-components/simple-components";
 import { useForm } from "react-hook-form";
 
 function MyApp({ Component, pageProps }: AppProps) {

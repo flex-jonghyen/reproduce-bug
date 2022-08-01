@@ -24,4 +24,4 @@ const nextConfig = {
   },
 };
 
-export default withBA({ enabled: false })(nextConfig);
+export default withBA({ enabled: true })(nextConfig);
